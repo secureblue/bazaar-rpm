@@ -1,17 +1,17 @@
 # SPDX-FileCopyrightText: Copyright 2025 Adam Fidel <adam@fidel.cloud>
+# SPDX-FileCopyrightText: Copyright 2026 The Secureblue Authors
 #
 # SPDX-License-Identifier: Apache-2.0
 
-%global majmin_ver 1.2.2
-
 Name:           krunner-bazaar
-Version:        %{majmin_ver}
+# renovate: datasource=github-releases depName=ublue-os/krunner-bazaar
+Version:        1.2.2
 Release:        1%{?dist}
 Summary:        KDE KRunner plugin for searching Flatpak applications via Bazaar
 
 License:        Apache-2.0
 URL:            https://github.com/ublue-os/krunner-bazaar
-Source:         %{url}/archive/refs/tags/v%{majmin_ver}.zip
+Source:         %{url}/archive/refs/tags/v%{version}.zip
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -68,5 +68,9 @@ test -f %{buildroot}%{_kf6_plugindir}/krunner/bazaarrunner.so
 %{_bindir}/bazaar-dbus-tool
 
 %changelog
+* Sat Jan 17 2025 alexvojproc <git@to.alexvp.net>
+- Use renovate bot for version updates
+- Add SPDX licensing information
+
 * Tue Jun 24 2025 Adam Fidel <adam@fidel.cloud> - 1.0.0-1
 - Initial RPM package

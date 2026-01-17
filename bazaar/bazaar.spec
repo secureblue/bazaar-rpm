@@ -47,7 +47,7 @@ It emphasizes supporting the developers who make the Linux desktop possible.
 
 %conf
 %meson \
-  -Dhardcoded_main_config_path=/etc/bazaar/main.yaml
+  -Dhardcoded_main_config_path=/usr/share/bazaar/main.yaml
 
 %build
 %meson_build
@@ -83,8 +83,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
 
 %changelog
-* Thu Jan 15 2026 alexvojproc <git@to.alexvp.net>
-- Remove deprecated configs and use distro-agnostic path
+* Thu Jan 17 2026 alexvojproc <git@to.alexvp.net>
+- Remove deprecated config paths and Universal Blue references
 - Add SPDX licensing information
 
 * Tue Dec 30 2025 Kyle Gospodnetich <me@kylegospodneti.ch>
