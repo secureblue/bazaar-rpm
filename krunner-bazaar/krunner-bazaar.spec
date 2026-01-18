@@ -14,10 +14,12 @@ Summary:        KDE KRunner plugin for searching Flatpak applications via Bazaar
 License:        Apache-2.0
 URL:            https://github.com/ublue-os/krunner-bazaar
 Source:         %{url}/archive/%{release_commit}.tar.gz
+Patch0:         include-kde-before-finding-qt6.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-kconfig-devel
 BuildRequires:  kf6-krunner-devel
 BuildRequires:  kf6-ki18n-devel
 BuildRequires:  kf6-kcoreaddons-devel
