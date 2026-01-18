@@ -70,7 +70,7 @@ test -f %{buildroot}%{_kf6_plugindir}/krunner/bazaarrunner.so
 %{_bindir}/bazaar-dbus-tool
 
 %changelog
-* Sat Jan 17 2025 alexvojproc <git@to.alexvp.net>
+* Sat Jan 17 2026 alexvojproc <git@to.alexvp.net>
 - Use renovate bot for version updates
 - Add SPDX licensing information
 
