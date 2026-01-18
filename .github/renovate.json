@@ -4,7 +4,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "\\.spec$"
+        "/.*\\.spec/"
       ],
       "matchStrings": [
         "#\\s?renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s*Version:\\s*(?<currentValue>.*)\\s",
