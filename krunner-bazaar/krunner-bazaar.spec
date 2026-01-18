@@ -5,7 +5,7 @@
 
 Name:           krunner-bazaar
 # renovate: datasource=github-releases depName=ublue-os/krunner-bazaar
-Version:        1.2.2
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        KDE KRunner plugin for searching Flatpak applications via Bazaar
 
