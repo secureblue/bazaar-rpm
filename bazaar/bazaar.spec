@@ -5,16 +5,17 @@
 # SPDX-License-Identifier: Apache-2.0
 
 %global appid io.github.kolunmi.Bazaar
+# renovate: datasource=github-tags depName=kolunmi/bazaar currentValue=0.7.2
+%global release_commit 8fa8219299e7c2eb7660d1243c5ea56e0903205c
 
 Name:           bazaar
-# renovate: datasource=github-releases depName=kolunmi/bazaar
 Version:        0.7.2
 Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
 License:        GPL-3.0-only
 URL:            https://github.com/kolunmi/bazaar
-Source:         %{url}/archive/v%{version}/bazaar-%{version}.tar.gz
+Source:         %{url}/archive/%{release_commit}.tar.gz
 
 # https://fedoraproject.org/wiki/Changes/EncourageI686LeafRemoval
 ExcludeArch:    %{ix86}
