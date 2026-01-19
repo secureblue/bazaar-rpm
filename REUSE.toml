@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["**.patch"]
+SPDX-FileCopyrightText = "2026 The Secureblue Authors"
+SPDX-License-Identifier = "Apache-2.0"
