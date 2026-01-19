@@ -16,6 +16,8 @@ Summary:        Flatpak-centric software center and app store
 License:        GPL-3.0-only
 URL:            https://github.com/kolunmi/bazaar
 Source:         %{url}/archive/%{release_commit}.tar.gz
+Patch0:         verified-apps-only.patch
+Patch1:         recognize-verified-remote.patch
 
 # https://fedoraproject.org/wiki/Changes/EncourageI686LeafRemoval
 ExcludeArch:    %{ix86}
@@ -44,7 +46,7 @@ applications and add-ons from Flatpak remotes, particularly Flathub.
 It emphasizes supporting the developers who make the Linux desktop possible.
 
 %prep
-%autosetup -n %{name}-%{release_commit}
+%autosetup -n %{name}-%{release_commit} -p1
 
 %conf
 %meson \
@@ -84,9 +86,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
 
 %changelog
-* Thu Jan 17 2026 alexvojproc <git@to.alexvp.net>
+* Mon Jan 19 2026 alexvojproc <git@to.alexvp.net>
 - Remove deprecated config paths and Universal Blue references
-- Add SPDX licensing information
+- Use commit hashes instead of release tags
+- Add flathub-verified patches
 
 * Tue Dec 30 2025 Kyle Gospodnetich <me@kylegospodneti.ch>
 - Update to version v0.7.0

@@ -1,0 +1,13 @@
+diff --git a/data/io.github.kolunmi.Bazaar.gschema.xml b/data/io.github.kolunmi.Bazaar.gschema.xml
+index eb82fda..f4658a2 100644
+--- a/data/io.github.kolunmi.Bazaar.gschema.xml
++++ b/data/io.github.kolunmi.Bazaar.gschema.xml
+@@ -17,7 +17,7 @@
+       <description>Hide applications which do not originate from Flathub</description>
+     </key>
+     <key name="show-only-verified" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Show Only Verified Content</summary>
+       <description>Hide applications which are not verified on Flathub</description>
+     </key>
