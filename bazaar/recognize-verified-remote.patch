@@ -1,8 +1,34 @@
+diff --git a/src/bz-appstream-parser.c b/src/bz-appstream-parser.c
+index a373952..0a02d68 100644
+--- a/src/bz-appstream-parser.c
++++ b/src/bz-appstream-parser.c
+@@ -253,8 +253,9 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+     }
+ 
+   share_urls = g_list_store_new (BZ_TYPE_URL);
+-  if (kinds & BZ_ENTRY_KIND_APPLICATION &&
+-      g_strcmp0 (remote_name, "flathub") == 0)
++  if (kinds & BZ_ENTRY_KIND_APPLICATION && (
++      g_strcmp0 (remote_name, "flathub") == 0 ||
++      g_strcmp0 (remote_name, "flathub-verified") == 0))
+     {
+       g_autofree char *flathub_url = NULL;
+       g_autoptr (BzUrl) url        = NULL;
+@@ -594,7 +595,8 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+       categories = bz_flathub_category_list_from_appstream (as_categories);
+     }
+ 
+-  if (g_strcmp0 (remote_name, "flathub") == 0)
++  if (g_strcmp0 (remote_name, "flathub") == 0 ||
++      g_strcmp0 (remote_name, "flathub-verified") == 0)
+     {
+       const char *verified_str     = NULL;
+       const char *method           = NULL;
 diff --git a/src/bz-entry.c b/src/bz-entry.c
-index 65f0ff3..bbd967a 100644
+index aeb5954..098dce7 100644
 --- a/src/bz-entry.c
 +++ b/src/bz-entry.c
-@@ -518,7 +518,8 @@ bz_entry_set_property (GObject      *object,
+@@ -536,7 +536,8 @@ bz_entry_set_property (GObject      *object,
      case PROP_REMOTE_REPO_NAME:
        g_clear_pointer (&priv->remote_repo_name, g_free);
        priv->remote_repo_name = g_value_dup_string (value);
@@ -12,38 +38,11 @@ index 65f0ff3..bbd967a 100644
        g_object_notify_by_pspec (object, props[PROP_IS_FLATHUB]);
        break;
      case PROP_URL:
-diff --git a/src/bz-flatpak-entry.c b/src/bz-flatpak-entry.c
-index 9a74840..6f05df4 100644
---- a/src/bz-flatpak-entry.c
-+++ b/src/bz-flatpak-entry.c
-@@ -651,8 +651,9 @@ bz_flatpak_entry_new_for_ref (FlatpakRef    *ref,
-         }
- 
-       share_urls = g_list_store_new (BZ_TYPE_URL);
--      if (kinds & BZ_ENTRY_KIND_APPLICATION &&
--          g_strcmp0 (remote_name, "flathub") == 0)
-+      if (kinds & BZ_ENTRY_KIND_APPLICATION && (
-+          g_strcmp0 (remote_name, "flathub") == 0 ||
-+          g_strcmp0 (remote_name, "flathub-verified") == 0))
-         {
-           g_autofree char *flathub_url = NULL;
-           g_autoptr (BzUrl) url        = NULL;
-@@ -1029,7 +1030,9 @@ bz_flatpak_entry_new_for_ref (FlatpakRef    *ref,
-         }
-     }
- 
--  if (component != NULL && g_strcmp0 (remote_name, "flathub") == 0)
-+  if (component != NULL && (
-+      g_strcmp0 (remote_name, "flathub") == 0 ||
-+      g_strcmp0 (remote_name, "flathub-verified") == 0))
-     {
-       const char *verified_str     = NULL;
-       const char *method           = NULL;
 diff --git a/src/bz-flatpak-instance.c b/src/bz-flatpak-instance.c
-index 163d323..ec160b9 100644
+index a73d23e..a7ed8c1 100644
 --- a/src/bz-flatpak-instance.c
 +++ b/src/bz-flatpak-instance.c
-@@ -687,7 +687,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
+@@ -739,7 +739,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
          continue;
  
        name = flatpak_remote_get_name (remote);
@@ -53,7 +52,7 @@ index 163d323..ec160b9 100644
          return dex_future_new_true ();
      }
    return dex_future_new_false ();
-@@ -710,10 +711,10 @@ ensure_flathub_fiber (EnsureFlathubData *data)
+@@ -762,10 +763,10 @@ ensure_flathub_fiber (EnsureFlathubData *data)
  
    if (self->system != NULL)
      sys_remote = flatpak_installation_get_remote_by_name (
