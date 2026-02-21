@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 %global appid io.github.kolunmi.Bazaar
-# renovate: datasource=github-tags depName=kolunmi/bazaar currentValue=0.7.7
+# renovate: datasource=github-tags depName=kolunmi/bazaar currentValue=0.7.9
 %global release_commit 041cf62ec06400f871ab659af4b68c9b00211f87
 
 Name:           bazaar
