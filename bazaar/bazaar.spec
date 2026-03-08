@@ -8,6 +8,9 @@
 # renovate: datasource=github-tags depName=kolunmi/bazaar currentValue=0.7.12
 %global release_commit ce5f9c45571b9973f9223f75d207ee9674ca7a7c
 
+%global debug_package %{nil}
+%global debug_level 0
+
 Name:           bazaar
 Version:        0.7.12
 Release:        1%{?dist}
@@ -45,6 +48,20 @@ BuildRequires:  pkgconfig(libproxy-1.0)
 A new app store with a focus on discovering and installing
 applications and add-ons from Flatpak remotes, particularly Flathub.
 It emphasizes supporting the developers who make the Linux desktop possible.
+
+
+%package devel
+Summary:        Development files for the Bazaar GTK extensions 
+Requires:       %{name} = %{version}-%{release}
+
+%description devel
+Development files for Bazaar GTK extensions 
+
+%files devel
+%{_libdir}/libbge-0.1.so
+%{_libdir}/pkgconfig/bge-0.1.pc
+%{_includedir}/bge/
+
 
 %prep
 %autosetup -n %{name}-%{release_commit} -p1
@@ -85,6 +102,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
+
 
 %changelog
 * Mon Jan 19 2026 alexvojproc <git@to.alexvp.net>
