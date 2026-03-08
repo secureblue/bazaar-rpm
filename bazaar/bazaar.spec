@@ -103,7 +103,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
 
-
 %changelog
 * Mon Jan 19 2026 alexvojproc <git@to.alexvp.net>
 - Remove deprecated config paths and Universal Blue references
