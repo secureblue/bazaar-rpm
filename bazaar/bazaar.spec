@@ -49,20 +49,6 @@ A new app store with a focus on discovering and installing
 applications and add-ons from Flatpak remotes, particularly Flathub.
 It emphasizes supporting the developers who make the Linux desktop possible.
 
-
-%package devel
-Summary:        Development files for the Bazaar GTK extensions 
-Requires:       %{name} = %{version}-%{release}
-
-%description devel
-Development files for Bazaar GTK extensions 
-
-%files devel
-%{_libdir}/libbge-0.1.so
-%{_libdir}/pkgconfig/bge-0.1.pc
-%{_includedir}/bge/
-
-
 %prep
 %autosetup -n %{name}-%{release_commit} -p1
 
@@ -76,6 +62,9 @@ Development files for Bazaar GTK extensions
 %install
 %meson_install
 %find_lang %{name}
+rm %{buildroot}%{_libdir}/libbge-0.1.so
+rm %{buildroot}%{_libdir}/pkgconfig/bge-0.1.pc
+rm -rf %{buildroot}%{_includedir}/bge/
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
