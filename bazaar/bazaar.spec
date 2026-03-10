@@ -13,7 +13,7 @@
 
 Name:           bazaar
 Version:        0.7.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Flatpak-centric software center and app store
 
 License:        GPL-3.0-only
