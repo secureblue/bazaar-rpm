@@ -5,17 +5,17 @@
 # SPDX-License-Identifier: Apache-2.0
 
 %global appid io.github.kolunmi.Bazaar
-# renovate: datasource=github-tags depName=kolunmi/bazaar currentValue=0.7.12
+# renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.7.13
 %global release_commit ce5f9c45571b9973f9223f75d207ee9674ca7a7c
 
 Name:           bazaar
-Version:        0.7.12
-Release:        3%{?dist}
+Version:        0.7.13
+Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
 License:        GPL-3.0-only
-URL:            https://github.com/kolunmi/bazaar
-Source:         %{url}/archive/%{release_commit}.tar.gz
+URL:            https://usebazaar.org/
+Source:         https://github.com/bazaar-org/bazaar/archive/%{release_commit}.tar.gz
 Patch0:         verified-apps-only.patch
 Patch1:         recognize-verified-remote.patch
 
@@ -27,6 +27,8 @@ BuildRequires:  meson
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  blueprint-compiler >= 0.20
 BuildRequires:  desktop-file-utils
+BuildRequires:  python3-babel
+BuildRequires:  pkgconfig(gtk4) >= 4.22.1
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(xmlb)
 BuildRequires:  pkgconfig(flatpak)
@@ -99,6 +101,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_includedir}/bge/
 
 %changelog
+* Wed Apr 1 2026 Jill Fiore <contact@lumaeris.com>
+- Update to version v0.7.13
+- Specify GTK4 >= 4.22.1
+- Add new dependency python3-babel
+
 * Tue Mar 10 2026 alexvojproc <git@to.alexvp.net>
 - Specify blueprint-compiler >= 0.20
 - Add devel package for libbge (Bazaar GTK Extensions)
