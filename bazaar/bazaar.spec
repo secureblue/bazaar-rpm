@@ -6,7 +6,7 @@
 
 %global appid io.github.kolunmi.Bazaar
 # renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.7.13
-%global release_commit ce5f9c45571b9973f9223f75d207ee9674ca7a7c
+%global release_commit e832f853a1ac7cad5e4ac2f2ca2b51c7915a38be
 
 Name:           bazaar
 Version:        0.7.13
