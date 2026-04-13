@@ -9,7 +9,7 @@
 %global release_commit e832f853a1ac7cad5e4ac2f2ca2b51c7915a38be
 
 Name:           bazaar
-Version:        0.7.13
+Version:        0.7.14
 Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
