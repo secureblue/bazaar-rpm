@@ -8,6 +8,8 @@
 # renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.7.13
 %global release_commit cf24df0aa7ccbbbe79a2089391668eb8fb6b99f0
 
+%global debug_package %{nil}
+
 Name:           bazaar
 Version:        0.7.14
 Release:        1%{?dist}
@@ -68,6 +70,7 @@ Development files for Bazaar GTK extensions
 %install
 %meson_install
 %find_lang %{name}
+rm %{buildroot}%{_bindir}/bge-demo
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
