@@ -1,8 +1,8 @@
 diff --git a/src/bz-appstream-parser.c b/src/bz-appstream-parser.c
-index a373952..0a02d68 100644
+index dcb9fad..be4c9f0 100644
 --- a/src/bz-appstream-parser.c
 +++ b/src/bz-appstream-parser.c
-@@ -253,8 +253,9 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+@@ -290,8 +290,9 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
      }
  
    share_urls = g_list_store_new (BZ_TYPE_URL);
@@ -14,8 +14,8 @@ index a373952..0a02d68 100644
      {
        g_autofree char *flathub_url = NULL;
        g_autoptr (BzUrl) url        = NULL;
-@@ -594,7 +595,8 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
-       categories = bz_flathub_category_list_from_appstream (as_categories);
+@@ -636,7 +637,8 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+         }
      }
  
 -  if (g_strcmp0 (remote_name, "flathub") == 0)
@@ -25,10 +25,10 @@ index a373952..0a02d68 100644
        const char *verified_str     = NULL;
        const char *method           = NULL;
 diff --git a/src/bz-entry.c b/src/bz-entry.c
-index aeb5954..098dce7 100644
+index 809d851..ec86657 100644
 --- a/src/bz-entry.c
 +++ b/src/bz-entry.c
-@@ -536,7 +536,8 @@ bz_entry_set_property (GObject      *object,
+@@ -505,7 +505,8 @@ bz_entry_set_property (GObject      *object,
      case PROP_REMOTE_REPO_NAME:
        g_clear_pointer (&priv->remote_repo_name, g_free);
        priv->remote_repo_name = g_value_dup_string (value);
@@ -39,10 +39,10 @@ index aeb5954..098dce7 100644
        break;
      case PROP_URL:
 diff --git a/src/bz-flatpak-instance.c b/src/bz-flatpak-instance.c
-index a73d23e..a7ed8c1 100644
+index af9f225..c0615b2 100644
 --- a/src/bz-flatpak-instance.c
 +++ b/src/bz-flatpak-instance.c
-@@ -739,7 +739,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
+@@ -799,7 +799,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
          continue;
  
        name = flatpak_remote_get_name (remote);
@@ -52,7 +52,7 @@ index a73d23e..a7ed8c1 100644
          return dex_future_new_true ();
      }
    return dex_future_new_false ();
-@@ -762,10 +763,10 @@ ensure_flathub_fiber (EnsureFlathubData *data)
+@@ -821,10 +822,10 @@ ensure_flathub_fiber (EnsureFlathubData *data)
  
    if (self->system != NULL)
      sys_remote = flatpak_installation_get_remote_by_name (
@@ -64,4 +64,7 @@ index a73d23e..a7ed8c1 100644
 +        self->user, "flathub-verified", cancellable, NULL);
  
    if (sys_remote != NULL)
-     remote = g_steal_pointer (&sys_remote);
+     {
+-- 
+2.53.0
+
