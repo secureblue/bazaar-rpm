@@ -70,6 +70,7 @@ Development files for Bazaar GTK extensions
 %install
 %meson_install
 %find_lang %{name}
+rm %{buildroot}%{_bindir}/bge-demo
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
@@ -101,7 +102,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %files devel
 %{_libdir}/pkgconfig/bge-0.1.pc
 %{_includedir}/bge/
-%{_bindir}/bge-demo
 
 %changelog
 * Wed Apr 1 2026 Jill Fiore <contact@lumaeris.com>
