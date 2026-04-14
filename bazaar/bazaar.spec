@@ -6,10 +6,10 @@
 
 %global appid io.github.kolunmi.Bazaar
 # renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.7.13
-%global release_commit e832f853a1ac7cad5e4ac2f2ca2b51c7915a38be
+%global release_commit cf24df0aa7ccbbbe79a2089391668eb8fb6b99f0
 
 Name:           bazaar
-Version:        0.7.13
+Version:        0.7.14
 Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
