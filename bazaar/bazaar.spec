@@ -8,6 +8,8 @@
 # renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.7.13
 %global release_commit cf24df0aa7ccbbbe79a2089391668eb8fb6b99f0
 
+%global debug_package %{nil}
+
 Name:           bazaar
 Version:        0.7.14
 Release:        1%{?dist}
@@ -99,6 +101,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %files devel
 %{_libdir}/pkgconfig/bge-0.1.pc
 %{_includedir}/bge/
+%{_bindir}/bge-demo
 
 %changelog
 * Wed Apr 1 2026 Jill Fiore <contact@lumaeris.com>
