@@ -11,7 +11,7 @@
 %global debug_package %{nil}
 
 Name:           bazaar
-Version:        0.7.14
+Version:        0.7.15
 Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
