@@ -90,7 +90,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/applications/%{appid}.desktop
 %{_bindir}/%{name}
 %{_bindir}/%{name}-dl-worker
-%{_libdir}/libbge-0.1.so
+%{_libdir}/libbge-%{version}.so
 %{_userunitdir}/%{appid}.service
 %{_datadir}/dbus-1/services/%{appid}.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
@@ -100,7 +100,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
 
 %files devel
-%{_libdir}/pkgconfig/bge-0.1.pc
+%{_libdir}/pkgconfig/bge-%{version}.pc
 %{_includedir}/bge/
 
 %changelog
