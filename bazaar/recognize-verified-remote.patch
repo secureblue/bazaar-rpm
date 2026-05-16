@@ -1,8 +1,8 @@
 diff --git a/src/bz-appstream-parser.c b/src/bz-appstream-parser.c
-index dcb9fad..be4c9f0 100644
+index 1ea2276..8e857ae 100644
 --- a/src/bz-appstream-parser.c
 +++ b/src/bz-appstream-parser.c
-@@ -290,8 +290,9 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+@@ -291,8 +291,9 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
      }
  
    share_urls = g_list_store_new (BZ_TYPE_URL);
@@ -14,7 +14,7 @@ index dcb9fad..be4c9f0 100644
      {
        g_autofree char *flathub_url = NULL;
        g_autoptr (BzUrl) url        = NULL;
-@@ -636,7 +637,8 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
+@@ -637,7 +638,8 @@ bz_appstream_parser_populate_entry (BzEntry     *entry,
          }
      }
  
@@ -25,10 +25,10 @@ index dcb9fad..be4c9f0 100644
        const char *verified_str     = NULL;
        const char *method           = NULL;
 diff --git a/src/bz-entry.c b/src/bz-entry.c
-index 809d851..ec86657 100644
+index 8581e36..f3b545f 100644
 --- a/src/bz-entry.c
 +++ b/src/bz-entry.c
-@@ -505,7 +505,8 @@ bz_entry_set_property (GObject      *object,
+@@ -508,7 +508,8 @@ bz_entry_set_property (GObject      *object,
      case PROP_REMOTE_REPO_NAME:
        g_clear_pointer (&priv->remote_repo_name, g_free);
        priv->remote_repo_name = g_value_dup_string (value);
@@ -39,10 +39,10 @@ index 809d851..ec86657 100644
        break;
      case PROP_URL:
 diff --git a/src/bz-flatpak-instance.c b/src/bz-flatpak-instance.c
-index af9f225..c0615b2 100644
+index 5b9a86e..cf4661b 100644
 --- a/src/bz-flatpak-instance.c
 +++ b/src/bz-flatpak-instance.c
-@@ -799,7 +799,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
+@@ -873,7 +873,8 @@ check_has_flathub_fiber (CheckHasFlathubData *data)
          continue;
  
        name = flatpak_remote_get_name (remote);
@@ -52,19 +52,28 @@ index af9f225..c0615b2 100644
          return dex_future_new_true ();
      }
    return dex_future_new_false ();
-@@ -821,10 +822,10 @@ ensure_flathub_fiber (EnsureFlathubData *data)
- 
+@@ -897,7 +898,7 @@ ensure_flathub_fiber (EnsureFlathubData *data)
    if (self->system != NULL)
-     sys_remote = flatpak_installation_get_remote_by_name (
--        self->system, "flathub", cancellable, NULL);
-+        self->system, "flathub-verified", cancellable, NULL);
-   if (self->user != NULL)
-     usr_remote = flatpak_installation_get_remote_by_name (
--        self->user, "flathub", cancellable, NULL);
-+        self->user, "flathub-verified", cancellable, NULL);
- 
-   if (sys_remote != NULL)
      {
--- 
-2.53.0
-
+       remote = flatpak_installation_get_remote_by_name (
+-          self->system, "flathub", cancellable, NULL);
++          self->system, "flathub-verified", cancellable, NULL);
+       installation = self->system;
+     }
+   if (remote == NULL)
+@@ -906,13 +907,13 @@ ensure_flathub_fiber (EnsureFlathubData *data)
+   if (self->user != NULL)
+     {
+       remote = flatpak_installation_get_remote_by_name (
+-          self->user, "flathub", cancellable, NULL);
++          self->user, "flathub-verified", cancellable, NULL);
+       installation = self->user;
+     }
+   if (remote == NULL && self->system != NULL)
+     {
+       remote = flatpak_installation_get_remote_by_name (
+-          self->system, "flathub", cancellable, NULL);
++          self->system, "flathub-verified", cancellable, NULL);
+       if (remote != NULL)
+         installation = self->system;
+     }
