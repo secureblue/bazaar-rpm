@@ -12,7 +12,7 @@
 
 Name:           bazaar
 Version:        0.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Flatpak-centric software center and app store
 
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  blueprint-compiler >= 0.20
 BuildRequires:  desktop-file-utils
 BuildRequires:  python3-babel
 BuildRequires:  pkgconfig(gtk4) >= 4.22.1
+BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(xmlb)
 BuildRequires:  pkgconfig(flatpak)
@@ -90,6 +91,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/applications/%{appid}.desktop
 %{_bindir}/%{name}
 %{_bindir}/%{name}-dl-worker
+%{_bindir}/%{name}-refresh-worker
 %{_libdir}/libbge-%{version}.so
 %{_userunitdir}/%{appid}.service
 %{_datadir}/dbus-1/services/%{appid}.service
@@ -104,6 +106,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_includedir}/bge/
 
 %changelog
+* Sun May 17 2026 Jill Fiore <contact@lumaeris.com>
+- Add new dependency gtksourceview-5
+- Add refresh worker binary to file list
+
 * Wed Apr 1 2026 Jill Fiore <contact@lumaeris.com>
 - Update to version v0.7.13
 - Specify GTK4 >= 4.22.1
