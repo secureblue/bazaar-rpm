@@ -5,14 +5,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 %global appid io.github.kolunmi.Bazaar
-# renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.8.0
-%global release_commit e20d8c71133d3b82dbb6a75e960a79682ba82400
+# renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.8.1
+%global release_commit 43ce9f792d10e0f328b6cc1c08aa218d052db9f9
 
 %global debug_package %{nil}
 
 Name:           bazaar
-Version:        0.8.0
-Release:        2%{?dist}
+Version:        0.8.1
+Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
 License:        GPL-3.0-only
