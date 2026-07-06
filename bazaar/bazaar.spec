@@ -5,13 +5,13 @@
 # SPDX-License-Identifier: Apache-2.0
 
 %global appid io.github.kolunmi.Bazaar
-# renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.8.1
-%global release_commit 43ce9f792d10e0f328b6cc1c08aa218d052db9f9
+# renovate: datasource=github-tags depName=bazaar-org/bazaar currentValue=0.9.0
+%global release_commit b6e9a6594cf39b0b6df644f9f27aaf4a925138d9
 
 %global debug_package %{nil}
 
 Name:           bazaar
-Version:        0.8.1
+Version:        0.9.0
 Release:        1%{?dist}
 Summary:        Flatpak-centric software center and app store
 
@@ -92,7 +92,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_bindir}/%{name}
 %{_bindir}/%{name}-dl-worker
 %{_bindir}/%{name}-refresh-worker
-%{_libdir}/libbge-%{version}.so
+%{_libdir}/libbge.so.0*
 %{_userunitdir}/%{appid}.service
 %{_datadir}/dbus-1/services/%{appid}.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
@@ -102,8 +102,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/gnome-shell/search-providers/%{appid}.search-provider.ini
 
 %files devel
-%{_libdir}/pkgconfig/bge-%{version}.pc
+%{_libdir}/pkgconfig/bge.pc
 %{_includedir}/bge/
+%{_libdir}/libbge.so
 
 %changelog
 * Sun May 17 2026 Jill Fiore <contact@lumaeris.com>
