@@ -3,11 +3,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# renovate: datasource=github-tags depName=bazaar-org/krunner-bazaar currentValue=1.3.0
-%global release_commit dbed96fa4c2e709c38432eb63e58289636f01b33
+# renovate: datasource=github-tags depName=bazaar-org/krunner-bazaar currentValue=1.4.0
+%global release_commit 323fc8d684a60a7f864964e97d55371bd6a74d9c
 
 Name:           krunner-bazaar
-Version:        1.3.0
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        KDE KRunner plugin for searching Flatpak applications via Bazaar
 
