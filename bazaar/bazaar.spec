@@ -95,7 +95,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{appid}.desktop
 %{_bindir}/%{name}-daemon
 %{_bindir}/%{name}-dl-worker
 %{_libdir}/libbge.so.0*
-dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libbazaar-login-page.so
 %{_userunitdir}/%{appid}.service
 %{_datadir}/dbus-1/services/%{appid}.SearchProvider.service
